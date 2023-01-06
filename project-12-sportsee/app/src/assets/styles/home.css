@@ -1,0 +1,14 @@
+.home-page__container {
+  display: flex;
+  gap: 60px;
+  padding: 70px 80px 70px 70px;
+}
+
+.home-page__user {
+  text-decoration: none;
+  color: red;
+  background-color: black;
+  height: fit-content;
+  padding: 8px 12px;
+  border-radius: 15px;
+}

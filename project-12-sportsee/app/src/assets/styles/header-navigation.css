@@ -1,0 +1,18 @@
+.header-navigation__container {
+  background-color: black;
+  display: flex;
+  padding: 20px 30px;
+}
+
+.header-navigation__navigation {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header-navigation__link {
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+}

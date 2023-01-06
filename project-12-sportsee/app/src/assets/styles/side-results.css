@@ -1,0 +1,28 @@
+.side-results__container {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.side-results__image {
+  width: 60px;
+  height: 60px;
+}
+
+.side-results__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.side-results__text {
+  font-size: 20px;
+  color: #282d30;
+  margin: 0;
+}
+
+.side-results__title {
+  color: #74798c;
+  font-size: 14px;
+  margin: 0;
+}

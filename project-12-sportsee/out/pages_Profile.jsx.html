@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/Profile.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/Profile.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import "../assets/styles/profile.css";
+import SideResults from "../components/SideResults";
+import Error from "./Error";
+import UserDailyActivity from "../components/UserDailyActivty";
+
+/* Importing the functions that call the API from the service.js file. */
+import fetchData from "../assets/data/services/services";
+import mock from "../assets/data/mock"; // This JSON file mocks a user profile
+
+/* The above code is a React component that is used to fetch data from an API. The data is then passed
+to the Content component. */
+/**
+ * Returns a React component that displays an error message if the user ID is invalid
+ * @param {string} id The user ID
+ * @returns A React component.
+ */
+
+function Profile() {
+  const { id } = useParams();
+
+  /* Setting the state of the component. */
+  const [userFetchedData, setUserFetchedData] = useState(null);
+  const [userFetchedActivity, setUserFetchedActivity] = useState(null);
+  const [userFetchedAvgSessions, setUserFetchedAvgSessions] = useState(null);
+  const [userFetchedPerformance, setUserFetchedPerformance] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  /* A boolean that is used to switch between the mocked data and the real data. */
+  const useMockedData = false;
+
+  useEffect(() => {
+    if (useMockedData) {
+      setUserFetchedData(mock.USER_MAIN_DATA[0]); // The commented code is for the mocked data
+      setUserFetchedActivity(mock.USER_ACTIVITY[0]);
+      setUserFetchedAvgSessions(mock.USER_AVERAGE_SESSIONS[0]);
+      setUserFetchedPerformance(mock.USER_PERFORMANCE[0]);
+      setIsLoaded(true);
+    } else {
+      async function fetchApi() {
+        setUserFetchedData(await fetchData(id, ""));
+        setUserFetchedActivity(await fetchData(id, "activity"));
+        setUserFetchedAvgSessions(await fetchData(id, "average-sessions"));
+        setUserFetchedPerformance(await fetchData(id, "performance"));
+        setIsLoaded(true);
+      }
+      fetchApi();
+    }
+  }, [
+    setUserFetchedData,
+    setUserFetchedActivity,
+    setUserFetchedAvgSessions,
+    setUserFetchedPerformance,
+    id,
+    useMockedData,
+  ]);
+
+  // console.log(
+  //   userFetchedData,
+  //   userFetchedActivity,
+  //   userFetchedAvgSessions,
+  //   userFetchedPerformance
+  // );
+
+  return isLoaded ? (
+    &lt;div className="profile-page__container">
+      &lt;div>
+        &lt;h1 className="profile-page__title">
+          Bonjour
+          &lt;span className="profile-page__name">
+            {" "}
+            {userFetchedData.userInfos.firstName}
+          &lt;/span>
+        &lt;/h1>
+        &lt;p className="profile-page__content">
+          Félicitation ! Vous avez explosé vos objectifs hier 👏
+        &lt;/p>
+      &lt;/div>
+      &lt;div className="profile-page__body">
+        &lt;section className="profile-page__activity-section">
+          &lt;UserDailyActivity
+            userData={userFetchedData}
+            userActivity={userFetchedActivity}
+            userSessions={userFetchedAvgSessions}
+            userPerformance={userFetchedPerformance}
+          />
+        &lt;/section>
+        &lt;aside className="profile-page__side-results">
+          &lt;SideResults
+            icon="/images/calories-icon.png"
+            text={`${userFetchedData.keyData.calorieCount}kCal`}
+            title="Calories"
+          />
+          &lt;SideResults
+            icon="/images/protein-icon.png"
+            text={`${userFetchedData.keyData.proteinCount}g`}
+            title="Proteines"
+          />
+          &lt;SideResults
+            icon="/images/carbs-icon.png"
+            text={`${userFetchedData.keyData.carbohydrateCount}g`}
+            title="Glucides"
+          />
+          &lt;SideResults
+            icon="/images/fat-icon.png"
+            text={`${userFetchedData.keyData.lipidCount}g`}
+            title="Lipides"
+          />
+        &lt;/aside>
+      &lt;/div>
+    &lt;/div>
+  ) : (
+    &lt;Error />
+  );
+}
+
+export default Profile;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#DailyActivityChart">DailyActivityChart</a></li><li><a href="global.html#HeaderNavigation">HeaderNavigation</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#SideNavigation">SideNavigation</a></li><li><a href="global.html#SideResults">SideResults</a></li><li><a href="global.html#UserAverageDurationSessionChart">UserAverageDurationSessionChart</a></li><li><a href="global.html#UserDailyActivity">UserDailyActivity</a></li><li><a href="global.html#UserDailyActivityTooltype">UserDailyActivityTooltype</a></li><li><a href="global.html#UserPerformancesChart">UserPerformancesChart</a></li><li><a href="global.html#UserScoreChart">UserScoreChart</a></li><li><a href="global.html#UserSessionTooltype">UserSessionTooltype</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sun Dec 18 2022 11:47:32 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

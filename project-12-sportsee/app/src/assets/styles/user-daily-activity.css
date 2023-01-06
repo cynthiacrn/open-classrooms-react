@@ -1,0 +1,54 @@
+.user-daily-activity__container {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  height: 600px;
+}
+
+.user-daily-activity__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-daily-activity__header-description {
+  display: flex;
+  gap: 32px;
+}
+
+.user-daily-activity__header-title {
+  margin: 0;
+  color: #20253a;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.user-daily-activity__header-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #74798c;
+  font-size: 14px;
+}
+
+.user-daily-activity__header-text img {
+  width: 8px;
+  height: 8px;
+}
+
+.user-daily-activity__header-text p {
+  margin: 0;
+}
+
+.user-daily-activity__charts {
+  display: flex;
+  gap: 30px;
+}
+
+@media screen and (max-width: 1440px) {
+  .user-daily-activity__container {
+    padding: 0;
+    width: 100%;
+  }
+}

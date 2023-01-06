@@ -1,0 +1,39 @@
+.profile-page__container {
+  padding: 70px 80px 70px 70px;
+  width: 100%;
+}
+
+.profile-page__title {
+  font-size: 48px;
+}
+
+.profile-page__name {
+  color: #ff0101;
+}
+
+.profile-page__content {
+  font-size: 18px;
+}
+
+.profile-page__side-results {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+
+.profile-page__body {
+  display: flex;
+  gap: 60px;
+}
+
+.profile-page__activity-section {
+  width: 80%;
+}
+
+@media screen and (max-width: 1440px) {
+  .profile-page__container {
+    padding: 10px;
+  }
+}
